@@ -1,5 +1,6 @@
 package com.ht03;
 
+import javax.swing.*;
 import java.util.ArrayList;
 /**
  * Clase que contiene la implementacion de los metodos
@@ -37,8 +38,29 @@ public class Sorting {
     /**
      * Metodo para realizar el ordenamiento tipo merge sort
      */
-    public ArrayList<Integer> mergeSort(){
-        return null;
+    public ArrayList<Integer> mergeSort(ArrayList<Integer> arr){
+        Integer inputsize = arr.size();
+        if (inputsize < 2){
+            System.out.println(arr.size());
+        }
+
+        Integer midIndex = inputsize/2;
+        Integer[] izmitad = new Integer[midIndex];
+        Integer[] demitad = new Integer[inputsize-midIndex];
+
+        for (int i =0 ; i< midIndex; i++){
+            izmitad[i] = arr.get(i);
+        }
+        for (int i= midIndex; i<inputsize; i++ ){
+            demitad[i-midIndex] = arr.get(i);
+        }
+
+        //mergeSort(izmitad);
+        //mergeSort(demitad);
+
+        //merge(arr, izmitad, demitad);
+
+        return arr; // se regresa el arreglo ordenado
     }
     /**
      * Metodo  para realizar el ordenamiento tipo quick sort
