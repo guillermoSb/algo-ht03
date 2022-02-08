@@ -37,19 +37,36 @@ public class Sorting {
     /**
      * Metodo para realizar el ordenamiento tipo merge sort
      */
-    public ArrayList<Integer> Mergesort(){
+    public ArrayList<Integer> mergeSort(){
         return null;
     }
     /**
      * Metodo  para realizar el ordenamiento tipo quick sort
      */
-    public ArrayList<Integer> Quicksort(){
+    public ArrayList<Integer>  quickSort(){
         return null;
     }
     /**
      * Metodo para realizar el ordenamiento tipo raidix sort
      */
-    public ArrayList<Integer> Radixsort(){
+    public ArrayList<Integer> radixSort(){
         return null;
+    }
+
+    /**
+     * Método para realizar el ordenamiento tipo bubble sort
+     */
+    public ArrayList<Integer> bubbleSort(ArrayList<Integer> arr) {
+        int m = arr.size(); // contra quien se compara
+        for (int p = m-1; p >= 1; --p) { //recorre de atras hacia adelante
+            for (int i = 0; i <= p; i++) { // recorre de adelante hacia atras
+                if(arr.get(i)>arr.get(i+1)) { // si una posicion anterior es mayor que la siguiente se hace cambio
+                    int temp = arr.get(i);
+                    arr.set(i, arr.get(i+1));
+                    arr.set(i+1, temp);
+                }
+            }
+        }
+        return arr; // retorno arreglo ordenado
     }
 }
