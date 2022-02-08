@@ -39,26 +39,41 @@ public class Sorting {
      * Metodo para realizar el ordenamiento tipo merge sort
      */
     public ArrayList<Integer> mergeSort(ArrayList<Integer> arr){
-        Integer inputsize = arr.size();
+        Integer inputsize = arr.size();// se nombra una variable que contenga el tamaño del arreglo
         if (inputsize < 2){
-            System.out.println(arr.size());
+            return arr;
         }
-
-        Integer midIndex = inputsize/2;
-        Integer[] izmitad = new Integer[midIndex];
-        Integer[] demitad = new Integer[inputsize-midIndex];
-
+        Integer midIndex = inputsize/2;// se divide el tamanio del arreglo en dos
+       ArrayList <Integer> izmitad = new ArrayList<>(midIndex); // se crea arreglo que contiene la mitad izquierda
+       ArrayList <Integer> demitad = new ArrayList<>(inputsize-midIndex);// se crea arreglo que contiene la mitad derecha
+        // se recorren los arreglos y se les agrega el contenido del arreglo original
         for (int i =0 ; i< midIndex; i++){
-            izmitad[i] = arr.get(i);
+            izmitad.add(arr.get(i));
         }
         for (int i= midIndex; i<inputsize; i++ ){
-            demitad[i-midIndex] = arr.get(i);
+            demitad.add(arr.get(i));
         }
-
-        //mergeSort(izmitad);
-        //mergeSort(demitad);
-
-        //merge(arr, izmitad, demitad);
+        mergeSort(izmitad);
+        mergeSort(demitad);
+        int ladoizq = izmitad.size();// se crea variable para el tamanio del arreglo del lado izquierdo
+        int ladoder = demitad.size();// se crea variable para el tamanio del arreglo del lado derecho
+        int i=0 , j =0, k=0;
+        while(i < ladoizq && j< ladoder){
+            if (izmitad.get(i)<= demitad.get(j))
+            { arr.add(izmitad.get(i)); // cuando ambas mitades contengan mas de o elementos se cumple la condicion
+                i++;}// la condicion permite que se regresen los elementos ya ordenados al arreglo original
+            else{
+                arr.add(demitad.get(j));
+                j++;}
+            k++;}
+        while (i< ladoizq){
+            arr.add(izmitad.get(i));// cuando se de cumpla el caso con el lado izquierdo, se agregan los elementos de este
+            i++;
+        }
+        while (j< ladoder){
+            arr.add(demitad.get(j));//cuando se de cumpla el caso con el lado derecho, se agregan los elementos de este
+            j++;
+        }
 
         return arr; // se regresa el arreglo ordenado
     }
