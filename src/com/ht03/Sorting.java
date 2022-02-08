@@ -1,17 +1,21 @@
 package com.ht03;
 
 import java.util.ArrayList;
+/**
+ * Clase que contiene la implementacion de los metodos
+ * @since 07/febrero/2022
+ * @author Aaron Beltran  21092
+ * @author Mariel Guamuche 21150
+ * @author Sebastian Reyes 21139
+ * @author Guillermo Santos 191517
+ */
 
 public class Sorting {
 
     /**
-     * Compara el valor después del índice y el anterior, si están ordenadas pasará al siguiente dato; sino los ordena
-     * y se regresa una posición
-     * Sí no hay un valor previo, entonces se mueve una posición,
-     * si no hay siguiente valor en el arreglo es porque está ordenado.
-     * @param arr
+     * Metodo realizar el ordenamiento tipo gnome sort
      */
-    public void Gnomesort(ArrayList<Integer> arr){
+    public ArrayList<Integer> Gnomesort(ArrayList<Integer> arr){
         int index = 0;
         int n = arr.size(); // se obtiene el tamaño del arraylist
         while (index < n) {
@@ -27,12 +31,25 @@ public class Sorting {
                 index--; // se reduce el índice
             }
         }
-        return;
+        return arr;
     }
 
-    public void Mergesort(){}
-
-    public void Quicksort(){}
-
-    public void Radixsort(){}
+    /**
+     * Metodo para realizar el ordenamiento tipo merge sort
+     */
+    public ArrayList<Integer> Mergesort(){
+        return null;
+    }
+    /**
+     * Metodo  para realizar el ordenamiento tipo quick sort
+     */
+    public ArrayList<Integer> Quicksort(){
+        return null;
+    }
+    /**
+     * Metodo para realizar el ordenamiento tipo raidix sort
+     */
+    public ArrayList<Integer> Radixsort(){
+        return null;
+    }
 }
