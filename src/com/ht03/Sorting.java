@@ -16,7 +16,7 @@ public class Sorting {
     /**
      * Metodo realizar el ordenamiento tipo gnome sort
      */
-    public ArrayList<Integer> Gnomesort(ArrayList<Integer> arr){
+    public ArrayList<Integer> Gnomesort(ArrayList<Integer> arr) {
         int index = 0;
         int n = arr.size(); // se obtiene el tamaño del arraylist
         while (index < n) {
@@ -27,8 +27,8 @@ public class Sorting {
             else {
                 int temp = 0; // de lo contrario se cambian de posición
                 temp = arr.get(index);
-                arr.set(index, arr.get(index-1));
-                arr.set(index-1, temp);
+                arr.set(index, arr.get(index - 1));
+                arr.set(index - 1, temp);
                 index--; // se reduce el índice
             }
         }
@@ -38,51 +38,86 @@ public class Sorting {
     /**
      * Metodo para realizar el ordenamiento tipo merge sort
      */
-    public ArrayList<Integer> mergeSort(ArrayList<Integer> arr){
+    public ArrayList<Integer> mergeSort(ArrayList<Integer> arr) {
         Integer inputsize = arr.size();// se nombra una variable que contenga el tamaño del arreglo
-        if (inputsize < 2){
+        if (inputsize < 2) {
             return arr;
         }
-        Integer midIndex = inputsize/2;// se divide el tamanio del arreglo en dos
-       ArrayList <Integer> izmitad = new ArrayList<>(midIndex); // se crea arreglo que contiene la mitad izquierda
-       ArrayList <Integer> demitad = new ArrayList<>(inputsize-midIndex);// se crea arreglo que contiene la mitad derecha
+        Integer midIndex = inputsize / 2;// se divide el tamanio del arreglo en dos
+        ArrayList<Integer> izmitad = new ArrayList<>(midIndex); // se crea arreglo que contiene la mitad izquierda
+        ArrayList<Integer> demitad = new ArrayList<>(inputsize - midIndex);// se crea arreglo que contiene la mitad derecha
         // se recorren los arreglos y se les agrega el contenido del arreglo original
-        for (int i =0 ; i< midIndex; i++){
+        for (int i = 0; i < midIndex; i++) {
             izmitad.add(arr.get(i));
         }
-        for (int i= midIndex; i<inputsize; i++ ){
+        for (int i = midIndex; i < inputsize; i++) {
             demitad.add(arr.get(i));
         }
         mergeSort(izmitad);
         mergeSort(demitad);
         int ladoizq = izmitad.size();// se crea variable para el tamanio del arreglo del lado izquierdo
         int ladoder = demitad.size();// se crea variable para el tamanio del arreglo del lado derecho
-        int i=0 , j =0, k=0;
-        while(i < ladoizq && j< ladoder){
-            if (izmitad.get(i)<= demitad.get(j))
-            { arr.add(izmitad.get(i)); // cuando ambas mitades contengan mas de o elementos se cumple la condicion
-                i++;}// la condicion permite que se regresen los elementos ya ordenados al arreglo original
-            else{
+        int i = 0, j = 0, k = 0;
+        while (i < ladoizq && j < ladoder) {
+            if (izmitad.get(i) <= demitad.get(j)) {
+                arr.add(izmitad.get(i)); // cuando ambas mitades contengan mas de o elementos se cumple la condicion
+                i++;
+            }// la condicion permite que se regresen los elementos ya ordenados al arreglo original
+            else {
                 arr.add(demitad.get(j));
-                j++;}
-            k++;}
-        while (i< ladoizq){
+                j++;
+            }
+            k++;
+        }
+        while (i < ladoizq) {
             arr.add(izmitad.get(i));// cuando se de cumpla el caso con el lado izquierdo, se agregan los elementos de este
             i++;
         }
-        while (j< ladoder){
+        while (j < ladoder) {
             arr.add(demitad.get(j));//cuando se de cumpla el caso con el lado derecho, se agregan los elementos de este
             j++;
         }
 
         return arr; // se regresa el arreglo ordenado
     }
+
     /**
      * Metodo  para realizar el ordenamiento tipo quick sort
      */
-    public ArrayList<Integer>  quickSort(){
-        return null;
+    public ArrayList<Integer> quickSort(ArrayList<Integer> arr) {
+
+        int izq = 0;
+        int pivote = arr.size(); // se obtiene el tamaño del arraylist
+        int i = izq;         // i realiza la búsqueda de izquierda a derecha
+        int der = 0;
+        int j = der;         // j realiza la búsqueda de derecha a izquierda
+        int aux;
+
+        while (i < j) {                          // mientras no se crucen las búsquedas
+            while (i <= pivote && i < j) i++; // busca elemento mayor que pivote
+            while (j > pivote) j--;           // busca elemento menor que pivote
+            if (i < j) {                        // si no se han cruzado
+                aux = i;                      // los intercambia
+                i = j;
+                j = aux;
+            }
+        }
+
+        izq = j;      // se coloca el pivote en su lugar de forma que tendremos
+        j = pivote;      // los menores a su izquierda y los mayores a su derecha
+
+        if (izq < j - 1)
+            quickSort(izq, j - 1);          // se ordena subarray izquierdo
+        if (j + 1 < der)
+            quickSort(j + 1, der);          // se ordena subarray derecho
+
+        return arr;
     }
+
+    private void quickSort(int i, int der) {
+    }
+
+
     /**
      * Metodo para realizar el ordenamiento tipo raidix sort
      */
