@@ -1,6 +1,8 @@
 package com.ht03;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Algoritmos y Estructuras de Datos
@@ -17,9 +19,12 @@ public class Main {
 
     public static void main(String[] args) {
         FileManager manager = new FileManager();
-        ArrayList numbers = new ArrayList();
+        Sorting sorting = new Sorting();
         try {
-            manager.readFile("numbers.txt");
+
+            List nums = manager.readFile("numbers.txt").subList(0, 100);
+//            ArrayList<Integer> sortedNumbers = sorting.radixSort(new ArrayList<>(nums), 4);
+//            System.out.println(sortedNumbers);
         } catch (Exception e) {
             e.printStackTrace();
         }

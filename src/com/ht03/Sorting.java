@@ -2,6 +2,8 @@ package com.ht03;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Vector;
+
 /**
  * Clase que contiene la implementacion de los metodos
  * @since 07/febrero/2022
@@ -85,7 +87,6 @@ public class Sorting {
      * Metodo  para realizar el ordenamiento tipo quick sort
      */
     public ArrayList<Integer> quickSort(ArrayList<Integer> arr) {
-
         int izq = 0;
         int pivote = arr.size(); // se obtiene el tamaño del arraylist
         int i = izq;         // i realiza la búsqueda de izquierda a derecha
@@ -121,9 +122,44 @@ public class Sorting {
     /**
      * Metodo para realizar el ordenamiento tipo raidix sort
      */
-    public ArrayList<Integer> radixSort(){
-        return null;
+    public ArrayList<Integer> radixSort(ArrayList<Integer> numbers, int maxNumberDigits){
+        for (int i = 0; i < maxNumberDigits; i++) {
+            int x,j;
+            int value;
+            Vector<Vector<Integer>> bucket = new Vector<Vector<Integer>>(10);
+            bucket.setSize(10);
+            for (j = 0; j<10;j++) bucket.set(j, new Vector<Integer>());
+            int n = numbers.size();
+            for (x = 0; x<n; x++) {
+                value = numbers.get(x);
+                j = digit(value, i);
+                bucket.get(j).add(value);
+            }
+            x = n;
+
+            for (j =9; j>=0; j--) {
+                System.out.println( String.format("%d ", j) + bucket.get(j));
+                while (!bucket.get(j).isEmpty()) {
+                    x--;
+                    value = bucket.get(j).remove(bucket.get(j).size() - 1);
+                    numbers.set(x, value);
+                }
+            }
+        }
+        return numbers;
     }
+
+    /**
+     * Metodo para obtener el valor de un digito d en un numero n
+     * @param n >= 0
+     * @param d >= 0
+     * @return
+     */
+    private int digit(int n, int d) {
+        if (d==0) return n % 10;
+        else return digit(n/10, d-1);
+    }
+
 
     /**
      * Método para realizar el ordenamiento tipo bubble sort
