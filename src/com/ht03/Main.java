@@ -23,8 +23,8 @@ public class Main {
         try {
 
             List nums = manager.readFile("numbers.txt").subList(0, 100);
-//            ArrayList<Integer> sortedNumbers = sorting.radixSort(new ArrayList<>(nums), 4);
-//            System.out.println(sortedNumbers);
+            ArrayList<Integer> sortedNumbers = sorting.bubbleSort(new ArrayList<>(nums));
+            System.out.println(sortedNumbers);
         } catch (Exception e) {
             e.printStackTrace();
         }
