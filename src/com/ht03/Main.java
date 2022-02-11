@@ -20,11 +20,12 @@ public class Main {
     public static void main(String[] args) {
         FileManager manager = new FileManager();
         Sorting sorting = new Sorting();
-        int limite = 10;
+        int limite = 100;
         try {
-//            List nums = manager.readFile("numbers.txt").subList(0, limite);
-            List nums = crearNumerosOrdenados().subList(0, limite);
-            ArrayList<Integer> sorted =  sorting.radixSort(new ArrayList<>(nums), 4);
+            List nums = manager.readFile("numbers.txt").subList(0, 3000);
+//            List nums = crearNumerosOrdenados().subList(0, 3000);
+            ArrayList<Integer> sorted =  sorting.Gnomesort(new ArrayList<>(nums));
+            System.out.println("Sorted: " + sorted);
         } catch (Exception e) {
             e.printStackTrace();
         }
