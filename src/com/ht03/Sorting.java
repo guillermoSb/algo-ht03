@@ -51,7 +51,7 @@ public class Sorting {
         ArrayList<Integer> left = new ArrayList<Integer>();
         ArrayList<Integer> right = new ArrayList<Integer>();
         int middle = unsortedList.size()/2;
-        //Splits the array into unsortedList size lists of size one
+        //Se separa el arreglo
         for(int i = 0; i < unsortedList.size(); i++)
         {
             if(i < middle)
@@ -65,7 +65,7 @@ public class Sorting {
         }
         left = mergeSort(left);
         right = mergeSort(right);
-        //combines the lists
+        //Se combinan los arreglos
         sortedList = merge(left, right);
         return sortedList;
     }
