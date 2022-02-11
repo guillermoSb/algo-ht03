@@ -57,30 +57,40 @@ public class Sorting {
         }
         mergeSort(izmitad);
         mergeSort(demitad);
+        merge(arr, izmitad, demitad);
+        return arr; // se regresa el arreglo ordenado
+    }
+
+    private static void merge (ArrayList<Integer> arr, ArrayList<Integer> izmitad, ArrayList<Integer> demitad) {
         int ladoizq = izmitad.size();// se crea variable para el tamanio del arreglo del lado izquierdo
         int ladoder = demitad.size();// se crea variable para el tamanio del arreglo del lado derecho
+
         int i = 0, j = 0, k = 0;
+
         while (i < ladoizq && j < ladoder) {
             if (izmitad.get(i) <= demitad.get(j)) {
-                arr.add(izmitad.get(i)); // cuando ambas mitades contengan mas de o elementos se cumple la condicion
+                arr.add(izmitad.get(i));
                 i++;
-            }// la condicion permite que se regresen los elementos ya ordenados al arreglo original
+            }
             else {
                 arr.add(demitad.get(j));
                 j++;
             }
             k++;
         }
+
         while (i < ladoizq) {
-            arr.add(izmitad.get(i));// cuando se de cumpla el caso con el lado izquierdo, se agregan los elementos de este
+            arr.add(izmitad.get(i));
             i++;
-        }
-        while (j < ladoder) {
-            arr.add(demitad.get(j));//cuando se de cumpla el caso con el lado derecho, se agregan los elementos de este
-            j++;
+            k++;
         }
 
-        return arr; // se regresa el arreglo ordenado
+        while (j < ladoder) {
+            arr.add(arr.get(j));
+            j++;
+            k++;
+        }
+
     }
 
     /**
