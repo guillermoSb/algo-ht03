@@ -20,7 +20,6 @@ public class Main {
     public static void main(String[] args) {
         FileManager manager = new FileManager();
         Sorting sorting = new Sorting();
-        int limite = 100;
         try {
             // Merge Sort
             ArrayList<Integer> sortedM =  sorting.mergeSort(manager.readFile("numbers.txt"));
