@@ -67,8 +67,8 @@ public class TestSorting {
 
 
     @Test
-    public void testQuickSort() {
-        ArrayList<Integer> sortedNums = sorting.quickSort(createNums());
+    public void qSort() {
+        ArrayList<Integer> sortedNums = sorting.quicksort(createNums(),0,createNums().size()-1);
         System.out.println(sortedNums);
         assertEquals(expectedSortedNums(),sortedNums);
     }
