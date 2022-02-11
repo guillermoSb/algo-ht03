@@ -31,7 +31,7 @@ public class Main {
             ArrayList<Integer> sortedB =  sorting.bubbleSort(manager.readFile("numbers.txt"));
             System.out.println("Bubble Sort: " + sortedB);
             // Bubble Sort
-            ArrayList<Integer> quickSort =  sorting.quicksort(manager.readFile("numbers.txt"));
+            ArrayList<Integer> quickSort =  sorting.quicksort(manager.readFile("numbers.txt"), 0, manager.readFile("numbers.txt").size()-1);
             System.out.println("Quick Sort: " + quickSort);
             // Bubble Sort
             ArrayList<Integer> gnomeSort =  sorting.Gnomesort(manager.readFile("numbers.txt"));

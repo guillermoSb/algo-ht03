@@ -191,8 +191,4 @@ public class Sorting {
         }
         return arr; // retorno arreglo ordenado
     }
-
-    public ArrayList<Integer> quicksort(ArrayList<Integer> readFile) {
-        return readFile;
-    }
 }
