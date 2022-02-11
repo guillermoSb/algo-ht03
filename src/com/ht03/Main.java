@@ -22,10 +22,21 @@ public class Main {
         Sorting sorting = new Sorting();
         int limite = 100;
         try {
-            List nums = manager.readFile("numbers.txt").subList(0, 3000);
-//            List nums = crearNumerosOrdenados().subList(0, 3000);
-            ArrayList<Integer> sorted =  sorting.Gnomesort(new ArrayList<>(nums));
-            System.out.println("Sorted: " + sorted);
+            // Merge Sort
+            ArrayList<Integer> sortedM =  sorting.mergeSort(manager.readFile("numbers.txt"));
+            System.out.println("Merge Sort: " + sortedM);
+            // Merge Sort
+            ArrayList<Integer> sortedR =  sorting.radixSort(manager.readFile("numbers.txt"), 4);
+            System.out.println("Radix Sort: " + sortedR);
+            // Bubble Sort
+            ArrayList<Integer> sortedB =  sorting.bubbleSort(manager.readFile("numbers.txt"));
+            System.out.println("Bubble Sort: " + sortedB);
+            // Bubble Sort
+            ArrayList<Integer> quickSort =  sorting.quickSort(manager.readFile("numbers.txt"));
+            System.out.println("Quick Sort: " + quickSort);
+            // Bubble Sort
+            ArrayList<Integer> gnomeSort =  sorting.Gnomesort(manager.readFile("numbers.txt"));
+            System.out.println("Gnome Sort: " + gnomeSort);
         } catch (Exception e) {
             e.printStackTrace();
         }
