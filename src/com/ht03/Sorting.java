@@ -105,36 +105,32 @@ public class Sorting {
     /**
      * Metodo  para realizar el ordenamiento tipo quick sort
      */
-    public ArrayList<Integer> quickSort(ArrayList<Integer> arr) {
-        int izq = 0;
-        int pivote = arr.size(); // se obtiene el tamaño del arraylist
-        int i = izq;         // i realiza la búsqueda de izquierda a derecha
-        int der = 0;
-        int j = der;         // j realiza la búsqueda de derecha a izquierda
+
+    public ArrayList<Integer> quicksort(ArrayList<Integer>a, int izq, int der) {
+
+        int pivote=a.get(izq); // tomamos primer elemento como pivote
+        int i=izq;         // i realiza la búsqueda de izquierda a derecha
+        int j=der;         // j realiza la búsqueda de derecha a izquierda
         int aux;
 
-        while (i < j) {                          // mientras no se crucen las búsquedas
-            while (i <= pivote && i < j) i++; // busca elemento mayor que pivote
-            while (j > pivote) j--;           // busca elemento menor que pivote
+        while(i < j){                          // mientras no se crucen las búsquedas
+            while(a.get(i)<= pivote && i < j) i++; // busca elemento mayor que pivote
+            while(a.get(j) > pivote) j--;           // busca elemento menor que pivote
             if (i < j) {                        // si no se han cruzado
-                aux = i;                      // los intercambia
-                i = j;
-                j = aux;
+                aux= a.get(i);                      // los intercambia
+                a.set(i,a.get(j));
+                a.set(j,aux);
             }
         }
 
-        izq = j;      // se coloca el pivote en su lugar de forma que tendremos
-        j = pivote;      // los menores a su izquierda y los mayores a su derecha
+        a.set(izq, a.get(j));      // se coloca el pivote en su lugar de forma que tendremos
+        a.set(j, pivote);      // los menores a su izquierda y los mayores a su derecha
 
-        if (izq < j - 1)
-            quickSort(izq, j - 1);          // se ordena subarray izquierdo
-        if (j + 1 < der)
-            quickSort(j + 1, der);          // se ordena subarray derecho
-
-        return arr;
-    }
-
-    private void quickSort(int i, int der) {
+        if(izq < j-1)
+            quicksort(a,izq,j-1);          // ordenamos subarray izquierdo
+        if(j+1 < der)
+            quicksort(a,j+1,der);          // ordenamos subarray derecho
+        return a;
     }
 
 
@@ -194,5 +190,9 @@ public class Sorting {
             }
         }
         return arr; // retorno arreglo ordenado
+    }
+
+    public ArrayList<Integer> quicksort(ArrayList<Integer> readFile) {
+        return readFile;
     }
 }
