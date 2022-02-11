@@ -167,7 +167,7 @@ public class Sorting {
     public ArrayList<Integer> bubbleSort(ArrayList<Integer> arr) {
         int m = arr.size(); // contra quien se compara
         for (int p = m-1; p >= 1; --p) { //recorre de atras hacia adelante
-            for (int i = 0; i <= p; i++) { // recorre de adelante hacia atras
+            for (int i = 0; i <= p-1; i++) { // recorre de adelante hacia atras
                 if(arr.get(i)>arr.get(i+1)) { // si una posicion anterior es mayor que la siguiente se hace cambio
                     int temp = arr.get(i);
                     arr.set(i, arr.get(i+1));
