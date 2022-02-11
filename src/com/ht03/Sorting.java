@@ -138,7 +138,6 @@ public class Sorting {
             x = n;
 
             for (j =9; j>=0; j--) {
-                System.out.println( String.format("%d ", j) + bucket.get(j));
                 while (!bucket.get(j).isEmpty()) {
                     x--;
                     value = bucket.get(j).remove(bucket.get(j).size() - 1);
