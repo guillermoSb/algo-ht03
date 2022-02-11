@@ -22,8 +22,8 @@ public class Main {
         Sorting sorting = new Sorting();
         try {
 
-            List nums = manager.readFile("numbers.txt").subList(0, 100);
-            ArrayList<Integer> sortedNumbers = sorting.bubbleSort(new ArrayList<>(nums));
+            List nums = manager.readFile("numbers.txt").subList(0, 3000);
+            ArrayList<Integer> sortedNumbers = sorting.radixSort(new ArrayList<>(nums), 4);
             System.out.println(sortedNumbers);
         } catch (Exception e) {
             e.printStackTrace();
