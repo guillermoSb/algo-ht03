@@ -40,57 +40,66 @@ public class Sorting {
     /**
      * Metodo para realizar el ordenamiento tipo merge sort
      */
-    public ArrayList<Integer> mergeSort(ArrayList<Integer> arr) {
-        Integer inputsize = arr.size();// se nombra una variable que contenga el tamaño del arreglo
-        if (inputsize < 2) {
-            return arr;
+    public ArrayList<Integer> mergeSort(ArrayList<Integer> unsortedList)
+    {
+        if(unsortedList.size() <= 1)
+        {
+            return unsortedList;
         }
-        Integer midIndex = inputsize / 2;// se divide el tamanio del arreglo en dos
-        ArrayList<Integer> izmitad = new ArrayList<>(midIndex); // se crea arreglo que contiene la mitad izquierda
-        ArrayList<Integer> demitad = new ArrayList<>(inputsize - midIndex);// se crea arreglo que contiene la mitad derecha
-        // se recorren los arreglos y se les agrega el contenido del arreglo original
-        for (int i = 0; i < midIndex; i++) {
-            izmitad.add(arr.get(i));
+        ArrayList<Integer> sortedList = new ArrayList<Integer>();
+
+        ArrayList<Integer> left = new ArrayList<Integer>();
+        ArrayList<Integer> right = new ArrayList<Integer>();
+        int middle = unsortedList.size()/2;
+        //Splits the array into unsortedList size lists of size one
+        for(int i = 0; i < unsortedList.size(); i++)
+        {
+            if(i < middle)
+            {
+                left.add(unsortedList.get(i));
+            }
+            else
+            {
+                right.add(unsortedList.get(i));
+            }
         }
-        for (int i = midIndex; i < inputsize; i++) {
-            demitad.add(arr.get(i));
-        }
-        mergeSort(izmitad);
-        mergeSort(demitad);
-        merge(arr, izmitad, demitad);
-        return arr; // se regresa el arreglo ordenado
+        left = mergeSort(left);
+        right = mergeSort(right);
+        //combines the lists
+        sortedList = merge(left, right);
+        return sortedList;
     }
 
-    private static void merge (ArrayList<Integer> arr, ArrayList<Integer> izmitad, ArrayList<Integer> demitad) {
-        int ladoizq = izmitad.size();// se crea variable para el tamanio del arreglo del lado izquierdo
-        int ladoder = demitad.size();// se crea variable para el tamanio del arreglo del lado derecho
-
-        int i = 0, j = 0, k = 0;
-
-        while (i < ladoizq && j < ladoder) {
-            if (izmitad.get(i) <= demitad.get(j)) {
-                arr.add(izmitad.get(i));
-                i++;
+    public ArrayList<Integer> merge(ArrayList<Integer> left, ArrayList<Integer> right)
+    {
+        ArrayList<Integer> mergedList = new ArrayList<Integer>();
+        while(left.size() > 0 || right.size() > 0)
+        {
+            if(left.size() > 0 && right.size() > 0)
+            {
+                if(left.get(0) < right.get(0))
+                {
+                    mergedList.add(left.get(0));
+                    left.remove(0);
+                }
+                else
+                {
+                    mergedList.add(right.get(0));
+                    right.remove(0);
+                }
             }
-            else {
-                arr.add(demitad.get(j));
-                j++;
+            else if(left.size() > 0)
+            {
+                mergedList.add(left.get(0));
+                left.remove(0);
             }
-            k++;
+            else if(right.size() > 0)
+            {
+                mergedList.add(right.get(0));
+                right.remove(0);
+            }
         }
-
-        while (i < ladoizq) {
-            arr.add(izmitad.get(i));
-            i++;
-            k++;
-        }
-
-        while (j < ladoder) {
-            arr.add(arr.get(j));
-            j++;
-            k++;
-        }
-
+        return mergedList;
     }
 
     /**

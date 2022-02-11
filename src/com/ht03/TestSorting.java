@@ -64,4 +64,12 @@ public class TestSorting {
         System.out.println(sortedNums);
         assertEquals(expectedSortedNums(),sortedNums);
     }
+
+
+    @Test
+    public void testQuickSort() {
+        ArrayList<Integer> sortedNums = sorting.quickSort(createNums());
+        System.out.println(sortedNums);
+        assertEquals(expectedSortedNums(),sortedNums);
+    }
 }
