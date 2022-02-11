@@ -24,7 +24,7 @@ public class Main {
         try {
 //            List nums = manager.readFile("numbers.txt").subList(0, limite);
             List nums = crearNumerosOrdenados().subList(0, limite);
-            sorting.radixSort(new ArrayList<>(nums), 4);
+            ArrayList<Integer> sorted =  sorting.radixSort(new ArrayList<>(nums), 4);
         } catch (Exception e) {
             e.printStackTrace();
         }
